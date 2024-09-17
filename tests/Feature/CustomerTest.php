@@ -24,7 +24,7 @@ class CustomerTest extends FeatureTestCase
 
         $url = $user->billingPortalUrl('https://example.com');
 
-        $this->assertStringStartsWith('https://billing.stripe.com/session/', $url);
+        $this->assertStringStartsWith('https://billing.stripe.com/p/session/', $url);
     }
 
     public function test_customers_can_be_redirected_to_their_billing_portal()
@@ -35,7 +35,7 @@ class CustomerTest extends FeatureTestCase
         $response = $user->redirectToBillingPortal('https://example.com');
 
         $this->assertInstanceOf(RedirectResponse::class, $response);
-        $this->assertStringStartsWith('https://billing.stripe.com/session/', $response->getTargetUrl());
+        $this->assertStringStartsWith('https://billing.stripe.com/p/session/', $response->getTargetUrl());
     }
 
     public function test_customers_can_manage_tax_ids()
